@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>ApiController</Title>
+      <Shortcut>api-controller</Shortcut>
+      <Description>Snippet for creating a basic API controller in .NET</Description>
+      <Author>ChatGPT</Author>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>namespace</ID>
+          <ToolTip>Namespace for the controller</ToolTip>
+          <Default>MyNamespace</Default>
+        </Literal>
+        <Literal>
+          <ID>controllername</ID>
+          <ToolTip>Name of the controller</ToolTip>
+          <Default>MyController</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+        <![CDATA[
+using Microsoft.AspNetCore.Mvc;
+
+namespace $namespace$
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class $controllername$ : ControllerBase
+    {
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok(new { Message = "Hello from $controllername$!" });
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            // Replace with your logic
+            return Ok(new { Message = $"You requested item {id}" });
+        }
+
+        [HttpPost]
+        public IActionResult Post([FromBody] object value)
+        {
+            // Replace with your logic
+            return Created("", value);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] object value)
+        {
+            // Replace with your logic
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            // Replace with your logic
+            return NoContent();
+        }
+    }
+}
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
